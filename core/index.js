@@ -6,13 +6,22 @@ console.log('hello World');
 
 //6. Blocking code
  // Run it first and observe the output
-//  var file = fs.readfileSync('./theory.md');
+//   var file = fs.readfileSync('./theory.md');
 //  console.log(file);
-//  console.log('run me first');
+//   console.log('run me first');
  
  // change it to run it in non-blocking manner.
  // Observe the difference in blocking and non-blocking code. 
+ var fs = require("fs");
+ var read = fs.readFile("./theory.md",(err,content)=>{
+   if(err){
+     console.log(err);
+   }
+   console.log(content);
+ })
 
 // 10. require math.js
+
   // console const pie and add and multiply function.
 
+ 
