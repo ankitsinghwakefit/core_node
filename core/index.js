@@ -20,7 +20,13 @@ console.log('hello World');
    console.log(content);
  })
 
+ 
+
 // 10. require math.js
+var tasks = require("./tasks.md");
+tasks.sum();
+tasks.multiply();
+console.log(tasks.pie);
 
   // console const pie and add and multiply function.
 

@@ -14,6 +14,9 @@ we can perform operations and can get help by - .help
 
 3. Run `index.js` in the same directory as script writer using `node FILE_NAME.js` and output result of console here.
 
+hello World
+<Buffer 23 23 20 47 6c 6f 62 61 6c 73 0a 47 6c 6f 62 61 6c 73 20 61 72 65 20 70 61 63 6b 61 67 65 73 20 6f 72 20 6d 6f 64 75 6c 65 73 20 77 68 69 63 68 20 61 ... >
+
 
 
 4. Require fs module and read `theory.md` using fs.readFile method in index.js file.
@@ -94,11 +97,17 @@ console.log(url.parse(sampleURL,true));
     - require in index.js and console the output by executing it there.
 ```js
 // math.js
-module.exports{
+
   const pie = 3.14;
-  function sum() {}
-  function multiply() {}
-}
+  function sum() {
+    console.log(pie+pie);
+  }
+  function multiply() {
+    console.log(pie*pie);
+  }
+module.exports.pie = pie;
+module.exports.sum = sum();
+module.exports.multiply = multiply();
 // export it from math.js
 ```
 
