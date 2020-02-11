@@ -6,6 +6,7 @@
 var server = http.createServer(requestHandler);
 
 function requestHandler(req, res) {
+  
   // handle all html file together
   if(req.url === '/') {
     // set appropriate headers
@@ -28,4 +29,35 @@ function requestHandler(req, res) {
   }
 }
 
+
 server.listen(3000);
+var http = require("http");
+var fs = require("fs");
+var url = require("url");
+var query = require("querystring");
+
+http.createServer((req,res)=>{
+  var parsedUrl = url.parse(req.url,true);
+    var pic=parsedUrl.pathname;
+    console.log(pic);
+
+  if(req.url === "/"){
+    res.setHeader("Content-Type","text/html")
+    fs.createReadStream("./index.html").pipe(res);
+  } 
+  else if(req.url.includes("css")){
+    res.setHeader("Content-Type","text/css");
+    fs.createReadStream("./stylesheet/style.css").pipe(res);
+  } 
+  // ["jpg"].indexOf(req.url.split(".").pop())
+  else if(req.url.includes("jpg")){
+    console.log("hii");
+    console.log(parsedUrl);
+    res.setHeader("Content-Type","image/jpg");
+    fs.createReadStream("."+pic).pipe(res);
+    // res.end();
+  }
+    
+    console.log(req.url);
+  // fs.createReadStream("./index.html").pipe(res);
+}).listen(8080,()=>{console.log("listening...")})
